@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  HashRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import PrivateRoute from "./components/Routes/AppRouter";
+import { GlobalStyle } from "./styled-components/GlobalStyles";
+import Employees from "./components/Employees/Employees";
+import Upload from "./components/Upload/Upload";
+import { useDispatch } from "react-redux";
+import { getAll } from "./services/getEmployees";
+import { useEffect } from "react";
+const App = () => {
 
-function App() {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   getAll().then(employees =>{
+  //     // dispatch(initEmployees(employees))
+  //   })
+
+  // }, [dispatch])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/home" exact element={<Home />} />
+          <Route path="/login" exact element={<Login />} />
+
+          <Route
+            path="/employees"
+            element={<PrivateRoute Component={Employees} />}
+          />
+          <Route path="/upload" element={<PrivateRoute Component={Upload} />} />
+
+          <Route path="*" exact element={<Navigate to="/home" />} />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
