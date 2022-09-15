@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const ContainerLFull = styled.div`
+  background-color: #ccc;
+  height: 90.7vh;
+`;
 export const ContainerL = styled.div`
   padding-top: 70px;
   margin: auto;
@@ -40,11 +44,10 @@ export const ButtonL = styled.button`
   color: #6d6d6d;
   transition: all ease 0.4s;
   :hover {
-    background-color: #dbdbdb   ;
+    background-color: #dbdbdb;
   }
 `;
 export const Err = styled.div`
   color: red;
   transition: all ease 0.4s;
-  
 `;

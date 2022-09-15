@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   ButtonL,
   ContainerL,
+  ContainerLFull,
   DivInput,
   Err,
   Input,
@@ -52,66 +53,68 @@ const Login = () => {
   };
 
   return (
-    <ContainerL>
-      <h1>
-        <center>Login</center>
-      </h1>
-      <DivInput>
-        <label htmlFor="username">Email</label>
-        <Input
-          type="text"
-          name="email"
-          className="form-control"
-          autoComplete="off"
-          onBlur={validarEmail}
-          onChange={handleChange}
-          value={form.email}
-          required
-          onPaste={(e) => {
-            e.preventDefault();
-            return false;
-          }}
-          onCopy={(e) => {
-            e.preventDefault();
-            return false;
-          }}
-        />
-      </DivInput>
-      <DivInput className="form-group">
-        <label htmlFor="password">Contraseña</label>
-        <Input
-          type="password"
-          name="password"
-          className="form-control"
-          autoComplete="off"
-          onChange={handleChange}
-          value={form.password}
-          required
-          onPaste={(e) => {
-            e.preventDefault();
-            return false;
-          }}
-          onCopy={(e) => {
-            e.preventDefault();
-            return false;
-          }}
-        />
-      </DivInput>
-      <DivInput>
-        <center>
-          <ButtonL
-            className="form-control btn btn-primary bgBlue"
-            onClick={checkLogin}
-          >
-            Iniciar sesión
-          </ButtonL>
-          <br />
-          <br />
+    <ContainerLFull>
+      <ContainerL>
+        <h1>
+          <center>Login</center>
+        </h1>
+        <DivInput>
+          <label htmlFor="username">Email</label>
+          <Input
+            type="text"
+            name="email"
+            className="form-control"
+            autoComplete="off"
+            onBlur={validarEmail}
+            onChange={handleChange}
+            value={form.email}
+            required
+            onPaste={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+            onCopy={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+          />
+        </DivInput>
+        <DivInput className="form-group">
+          <label htmlFor="password">Contraseña</label>
+          <Input
+            type="password"
+            name="password"
+            className="form-control"
+            autoComplete="off"
+            onChange={handleChange}
+            value={form.password}
+            required
+            onPaste={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+            onCopy={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+          />
+        </DivInput>
+        <DivInput>
+          <center>
+            <ButtonL
+              className="form-control btn btn-primary bgBlue"
+              onClick={checkLogin}
+            >
+              Iniciar sesión
+            </ButtonL>
+            <br />
+            <br />
 
-          {msg !== null && <Err>{msg}</Err>}
-        </center>
-      </DivInput>
-    </ContainerL>
+            {msg !== null && <Err>{msg}</Err>}
+          </center>
+        </DivInput>
+      </ContainerL>
+    </ContainerLFull>
   );
 };
 

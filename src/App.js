@@ -12,19 +12,15 @@ import { GlobalStyle } from "./styled-components/GlobalStyles";
 import Employees from "./components/Employees/Employees";
 import Upload from "./components/Upload/Upload";
 import { useDispatch } from "react-redux";
-import { getAll } from "./services/getEmployees";
 import { useEffect } from "react";
+import { getEmployees } from "./slices/thunks";
 const App = () => {
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getEmployees());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   getAll().then(employees =>{
-  //     // dispatch(initEmployees(employees))
-  //   })
-
-  // }, [dispatch])
-  
   return (
     <div className="App">
       <GlobalStyle />
